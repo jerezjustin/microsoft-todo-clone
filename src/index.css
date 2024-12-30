@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #292827;
+}
+
 @font-face {
     font-family: "Segoe UI";
     src: url("/fonts/segoe-ui/segoe-ui-webfont.woff2") format("woff2");
