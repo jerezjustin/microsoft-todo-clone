@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import DesktopNavigationSidebar from "../components/layout/DesktopNavigationSidebar";
 import MobileNavigationSidebar from "../components/layout/MobileNavigationSidebar";
+import DetailsSidebar from "../components/layout/DetailsSidebar";
 
 interface MainLayoutProps {
     children?: ReactNode;
@@ -25,7 +26,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 {isNavigationSidebarOpen && <DesktopNavigationSidebar />}
                 {isNavigationSidebarOpen && <MobileNavigationSidebar />}
 
-                {children}
+                <div className="flex flex-col w-full">{children}</div>
+
+                <DetailsSidebar />
             </main>
         </>
     );

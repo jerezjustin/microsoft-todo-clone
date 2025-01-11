@@ -15,15 +15,24 @@ export type IconProps = {
 export type Task = {
     id: string;
     name: string;
-    dueDate: string;
     important: boolean;
     completed: boolean;
+    listId: string;
+    dueDate?: string | null;
+    reminderDate?: string | null;
+    repeatInterval?: string | null;
+    createdAt?: string | null;
 };
 
 export type List = {
     id: string;
     name: string;
     icon: string;
-    tasks: Task[];
     type: "default" | "dynamic";
 };
+
+export type TaskByList = Record<string, Task[]>;
+
+export type SortBy = "name" | "dueDate" | "important" | "createAt";
+
+export type sortDir = "asc" | "desc";

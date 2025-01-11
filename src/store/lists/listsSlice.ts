@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ListState } from "../../interfaces";
+import { ListsState } from "../../interfaces";
 import { List } from "../../types";
 
-const initialState: ListState = {
+const initialState: ListsState = {
     loading: false,
     lists: [],
 };

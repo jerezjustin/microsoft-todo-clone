@@ -3,7 +3,7 @@ import BarsIcon from "../components/icons/BarsIcon";
 import CompletedCheckmarkCircleIcon from "../components/icons/CompletedCheckmarkCircleIcon";
 import HomeIcon from "../components/icons/HomeIcon";
 import StackIcon from "../components/icons/StackIcon";
-import StarIcon from "../components/icons/StartIcon";
+import StarIcon from "../components/icons/StarIcon";
 import SunIcon from "../components/icons/SunIcon";
 import { IconName } from "../enums";
 

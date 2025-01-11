@@ -7,6 +7,8 @@ import {
     setLocalStorage,
 } from "../../helpers/localStorageHelper";
 import { defaultLists } from "../../constants/defaultLists";
+import { tasksActions } from "../tasks/taskSlice";
+import { deleteListTasks } from "../tasks/taskActions";
 
 const STORAGE_KEY = StorageKeys.LISTS;
 
@@ -64,12 +66,15 @@ export const deleteList = (list: List) => async (dispatch: AppDispatch) => {
 
     try {
         const storedLists: List[] = getLocalStorage(STORAGE_KEY) || [];
+
         const updatedLists = storedLists.filter(
             (storedList) => storedList.id !== list.id
         );
 
         setLocalStorage(STORAGE_KEY, updatedLists);
+
         dispatch(listsActions.deleteList(list));
+        dispatch(deleteListTasks(list.id));
     } finally {
         dispatch(listsActions.finishLoading());
     }

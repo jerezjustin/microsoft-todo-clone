@@ -56,7 +56,7 @@ const DesktopNavigationSidebar = () => {
     return (
         <aside
             id="DesktopNavigationSidebar"
-            className="hidden relative md:flex flex-col md:w-sidebar lg:w-sidebar-lg shadow-md"
+            className="hidden relative md:flex flex-col md:w-sidebar lg:w-sidebar-lg shadow-md bg-white"
         >
             <div className="flex items-center w-full h-12 px-6 mt-4">
                 <button
@@ -72,7 +72,7 @@ const DesktopNavigationSidebar = () => {
                 <div>
                     {defaultLists.map((list: List) => (
                         <SidebarLink
-                            key={list.id}
+                            key={`desktop-${list.id}`}
                             active={list.id === listId}
                             icon={iconMap[list.icon as IconName]()}
                             to={`/tasks/${list.id}`}
@@ -90,7 +90,7 @@ const DesktopNavigationSidebar = () => {
                 <div>
                     {dynamicLists.map((list: List) => (
                         <div
-                            key={list.id}
+                            key={`desktop-${list.id}`}
                             onContextMenu={(e) => handleRightClick(e, list)}
                         >
                             <SidebarLink
@@ -113,6 +113,7 @@ const DesktopNavigationSidebar = () => {
                         list={targetList}
                         position={menuPosition}
                         onClose={handleCloseMenu}
+                        minusTopNavbarHeight={true}
                     />
                 )}
             </div>

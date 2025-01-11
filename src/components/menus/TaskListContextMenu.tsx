@@ -6,6 +6,7 @@ import { deleteList } from "../../store/lists/listsActions";
 import TrashBinIcon from "../icons/TrashBinIcon";
 import RenameIcon from "../icons/RenameIcon";
 import { useNavigate } from "react-router";
+import ContextMenuDivider from "../contextMenu/ContextMenuDivider";
 
 interface TaskListContextMenuProps extends Omit<ContextMenuProps, "children"> {
     list: List;
@@ -44,9 +45,7 @@ const TaskListContextMenu = ({ list, ...props }: TaskListContextMenuProps) => {
                         </span>
                     </button>
 
-                    <div className="px-3 my-2">
-                        <hr />
-                    </div>
+                    <ContextMenuDivider />
                 </>
             )}
 

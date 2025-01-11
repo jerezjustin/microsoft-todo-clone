@@ -71,8 +71,8 @@ const MobileNavigationSidebar = () => {
                     <div>
                         {defaultLists.map((list: List) => (
                             <SidebarLink
+                                key={`mobile-${list.id}`}
                                 active={list.id === listId}
-                                key={list.id}
                                 icon={iconMap[list.icon as IconName]()}
                                 to={`/tasks/${list.id}`}
                                 onClick={handleToggleSidebar}
@@ -89,7 +89,7 @@ const MobileNavigationSidebar = () => {
                     {/* Dynamic task list links */}
                     <div>
                         {dynamicLists.map((list: List) => (
-                            <div key={list.id}>
+                            <div key={`mobile-${list.id}`}>
                                 <SidebarLink
                                     active={list.id === listId}
                                     to={`/tasks/${list.id}`}

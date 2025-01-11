@@ -17,6 +17,8 @@ import TaskListContextMenu from "../menus/TaskListContextMenu";
 import BarsIcon from "../icons/BarsIcon";
 import { toggleSidebar } from "../../store/sidebar/sidebarSlice";
 import GroupIcon from "../icons/GroupIcon";
+import SortTaskContextMenu from "../menus/SortTaskContextMenu";
+import { useVisible } from "../../hooks/useVisible";
 
 interface TaskListHeader {
     list: List;
@@ -36,6 +38,12 @@ const TaskListHeader = ({ list }: TaskListHeader) => {
     const [editingListName, setEditingListName] = useState<boolean>(false);
     const [menuVisible, setMenuVisible] = useState<boolean>(false);
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+
+    const {
+        visible: isSortTaskMenuVisible,
+        show: showSortTaskMenu,
+        hide: hideSortTaskMenu,
+    } = useVisible();
 
     const handleOpenMenu = (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -75,7 +83,7 @@ const TaskListHeader = ({ list }: TaskListHeader) => {
     };
 
     return (
-        <div className="flex items-center w-full h-12 mx-6 my-4 text-primary">
+        <div className="flex items-center h-12 mx-6 my-4 text-primary">
             <div className="flex items-center ">
                 {!isNavigationSidebarOpen && (
                     <button
@@ -121,7 +129,22 @@ const TaskListHeader = ({ list }: TaskListHeader) => {
             </div>
 
             <div className="flex items-center ml-auto">
-                <TaskListHeaderButton icon={<SortIcon />} label="Sort" />
+                <div className="relative">
+                    <TaskListHeaderButton
+                        icon={<SortIcon />}
+                        label="Sort"
+                        onClick={showSortTaskMenu}
+                    />
+
+                    {isSortTaskMenuVisible && (
+                        <SortTaskContextMenu
+                            label="Sort By"
+                            position={{ x: "-50%", y: "100%" }}
+                            onClose={hideSortTaskMenu}
+                        />
+                    )}
+                </div>
+
                 <TaskListHeaderButton icon={<GroupIcon />} label="Group" />
             </div>
 
@@ -132,6 +155,7 @@ const TaskListHeader = ({ list }: TaskListHeader) => {
                     position={menuPosition}
                     onClose={handleCloseMenu}
                     handleRename={handleRenameFromMenu}
+                    minusTopNavbarHeight={true}
                 />
             )}
         </div>

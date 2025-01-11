@@ -1,5 +1,6 @@
 export enum StorageKeys {
     LISTS = "lists",
+    TASKS = "tasks",
 }
 
 export enum IconName {
@@ -9,4 +10,12 @@ export enum IconName {
     Star = "star",
     Stack = "stack",
     Sun = "sun",
+}
+
+export enum RepeatInterval {
+    Daily = "daily",
+    Weekdays = "weekdays",
+    Weekly = "weekly",
+    Monthly = "monthly",
+    Yearly = "yearly",
 }
